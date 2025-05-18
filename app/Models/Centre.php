@@ -7,17 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Centre extends Model
 {
     protected $fillable = [
-        'name',
-        'address',
-        'phone',
-        'email',
-        'password',
-        'role'
-    ];
+    'name',
+    'address',
+    'phone',
+    'email',
+    'password',
+    'role',
+    'capacite_max',
+];
 
     
     public function rendezVous(){
-        return $this->hasMany(RendezVous::class);
+        return $this->hasMany(RendezVous::class, 'id_centre');
     }
-    
+
+
 }

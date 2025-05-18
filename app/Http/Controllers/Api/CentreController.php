@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Centre;
 
-class Centrecontroller extends Controller
+class CentreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class Centrecontroller extends Controller
     public function index()
     {
         $centres = Centre::all();
-        if (!$centres) {
+        if ($centres->isEmpty()) {
             return response()->json(['message' => 'No centres found'], 404);
         }
         return response()->json($centres);    
@@ -41,7 +41,7 @@ class Centrecontroller extends Controller
      */
     public function show(string $id)
     {
-        $centre = Centre::find($id)->with('rendezVous');
+        $centre = Centre::with('rendezVous')->find($id);
         if ($centre){
             return response()->json($centre);
         }else{

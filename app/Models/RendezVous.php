@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Centre;
 
 class RendezVous extends Model
 {
@@ -19,7 +21,9 @@ class RendezVous extends Model
     function user(){
         return $this->belongTo(User::class);
     }
-    function centre(){
-        return $this->belongsTo(Centre::class);
+    public function centre()
+    {
+        return $this->belongsTo(Centre::class, 'id_centre');
     }
+
 }
