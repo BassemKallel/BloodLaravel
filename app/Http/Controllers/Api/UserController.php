@@ -14,9 +14,10 @@ class UserController extends Controller
      */
     public function index()
 {
-    $users = User::with('rendezVous')->get(); // Charge la relation en une seule requête
+    $users = User::with('rendezVous.centre')->get();
     return response()->json($users);
 }
+
 
 
     /**
@@ -48,15 +49,15 @@ class UserController extends Controller
      */
     public function show(string $id)
 {
-    $user = User::find($id);
+    $user = User::with('rendezVous.centre')->find($id);
 
     if ($user) {
-        $user->load('rendezVous'); // Charger la relation uniquement si l'utilisateur existe
         return response()->json($user);
     } else {
         return response()->json(['message' => 'User not found'], 404);
     }
 }
+
 
 
 

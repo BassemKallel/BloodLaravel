@@ -16,5 +16,5 @@ return [
 
     'max_age' => 0,
 
-    'supports_credentials' => false, // mettre true si tu utilises les cookies (ex: Sanctum)
+    'supports_credentials' => true, // mettre true si tu utilises les cookies (ex: Sanctum)
 ];
